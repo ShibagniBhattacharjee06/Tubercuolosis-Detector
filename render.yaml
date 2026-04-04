@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: voyage-imaging-backend
+    env: docker
+    region: oregon
+    plan: free # Free tier is 512MB RAM, which we've optimized for.
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: PORT
+        value: 8000
