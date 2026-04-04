@@ -31,21 +31,25 @@ export default function Prediction() {
       file.name
     );
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    let apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if (!apiUrl) {
       alert("Error: Backend URL (NEXT_PUBLIC_API_URL) is not configured in Vercel.");
       setLoading(false);
       return;
     }
 
+    // Clean URL: Remove trailing slash if present
+    apiUrl = apiUrl.trim().replace(/\/$/, "");
+    const fullUrl = `${apiUrl}/api/v1/predict`;
+
     try {
-      const response = await fetch(apiUrl + "/api/v1/predict", {
+      const response = await fetch(fullUrl, {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}`);
+        throw new Error(`Server responded with ${response.status} at ${fullUrl}`);
       }
 
       const json = await response.json();
@@ -55,7 +59,7 @@ export default function Prediction() {
     } catch (error) {
       console.error("Prediction Error:", error);
       setLoading(false);
-      alert("Error connecting to backend. Please check if Render backend is live.\nDetails: " + error.message);
+      alert(`Error connecting to backend.\n\nURL: ${fullUrl}\nDetails: ${error.message}`);
     }
   };
   const handleClear = () => {
