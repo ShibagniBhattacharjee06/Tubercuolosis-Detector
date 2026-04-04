@@ -31,17 +31,31 @@ export default function Prediction() {
       file.name
     );
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    if (!apiUrl) {
+      alert("Error: Backend URL (NEXT_PUBLIC_API_URL) is not configured in Vercel.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/v1/predict", {
+      const response = await fetch(apiUrl + "/api/v1/predict", {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
+
       const json = await response.json();
       console.log(json);
       setLoading(false);
       setResults(json)
     } catch (error) {
-      console.error(error);
+      console.error("Prediction Error:", error);
+      setLoading(false);
+      alert("Error connecting to backend. Please check if Render backend is live.\nDetails: " + error.message);
     }
   };
   const handleClear = () => {
