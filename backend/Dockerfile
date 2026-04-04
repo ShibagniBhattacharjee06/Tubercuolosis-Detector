@@ -1,3 +1,7 @@
+FROM python:3.10.9-slim-buster
+
+WORKDIR /app
+
 # Install system dependencies for ONNX Runtime and Pillow
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
