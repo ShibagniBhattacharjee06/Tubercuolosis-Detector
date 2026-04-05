@@ -25,7 +25,13 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v1.3-SafeMode-Ready"}
+    return {"message": "Welcome to MEDICARE app! v1.4-Diagnostic-Live"}
+
+
+@app.get("/api/v1/predict")
+async def predict_get():
+    """Diagnostic GET endpoint to test connectivity."""
+    return {"message": "Prediction endpoint is REACHABLE via GET. Use POST for actual predictions."}
 
 
 @app.post("/api/v1/predict")
