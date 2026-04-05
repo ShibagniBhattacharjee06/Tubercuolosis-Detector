@@ -87,7 +87,7 @@ export default function Prediction() {
       >
         {path ? (
           <div className="flex flex-col space-y-2">
-            <h3 className="text-center text-sky-600">Image Preview</h3>
+            <h3 className="text-center text-teal-600">Image Preview</h3>
             <div className="flex w-64 h-48 relative">
               <Image
                 className=" object-cover  rounded "
@@ -100,7 +100,7 @@ export default function Prediction() {
         ) : (
           <label
             id="label"
-            className="w-64 h-48 justify-center flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide border border-sky cursor-pointer hover:bg-sky-500 hover:text-white text-sky-500 ease-linear transition-all duration-150"
+            className="w-64 h-48 justify-center flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide border border-sky cursor-pointer hover:bg-teal-500 hover:text-white text-teal-500 ease-linear transition-all duration-150"
           >
             <svg
               className="w-10 h-10"
@@ -128,20 +128,20 @@ export default function Prediction() {
           results ?
             <div className="flex flex-col space-y-4">
               <div className="flex flex-col text-center space-y-1">
-                <h4 className="font-bold text-sky-700 py-1">Prediction Results</h4>
-                <p><span className="capitalize" >Class name:</span><span className=" text-sky-600"> {results?.predictions?.class_name}</span></p>
-                <p><span className="capitalize" >Confidence: </span><span className=" text-sky-600">{results?.predictions?.confidence} %</span></p>
-                <p><span className="capitalize" >Inference time:</span><span className=" text-sky-600"> {results?.inference_time}</span></p>
+                <h4 className="font-bold text-teal-700 py-1">Prediction Results</h4>
+                <p><span className="capitalize" >Class name:</span><span className=" text-teal-600"> {results?.predictions?.class_name}</span></p>
+                <p><span className="capitalize" >Confidence: </span><span className=" text-teal-600">{results?.predictions?.confidence} %</span></p>
+                <p><span className="capitalize" >Inference time:</span><span className=" text-teal-600"> {results?.inference_time}</span></p>
               </div>
               <button
                 onClick={handleClear}
-                className="bg-sky-600 rounded-full px-10 py-2 text-white hover:bg-sky-700 hover:shadow-sm transition-all cursor-pointer"
+                className="bg-teal-600 rounded-full px-10 py-2 text-white hover:bg-teal-700 hover:shadow-sm transition-all cursor-pointer"
               > Clear </button>
             </div>
             :
             <button
               type="submit"
-              className="bg-sky-600 rounded-full px-10 py-2 text-white hover:bg-sky-700 hover:shadow-sm transition-all cursor-pointer"
+              className="bg-teal-600 rounded-full px-10 py-2 text-white hover:bg-teal-700 hover:shadow-sm transition-all cursor-pointer"
             >          <div className="flex shrink-0 items-center space-x-2">
                 {loading ? (
                   <svg

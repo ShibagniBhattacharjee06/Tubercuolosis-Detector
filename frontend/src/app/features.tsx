@@ -57,14 +57,14 @@ export default function Features({}: Props) {
   ];
   return (
     <section className="w-full">
-      <ul className="mx-auto grid max-w-7xl grid-cols-1 rounded-t-3xl bg-sky-900 p-8 text-white md:grid-cols-3">
+      <ul className="mx-auto grid max-w-7xl grid-cols-1 rounded-t-3xl bg-teal-900 p-8 text-white md:grid-cols-3">
         {content &&
           content.map((item, i) => (
             <li
-              className="flex cursor-pointer flex-row place-content-center items-center space-x-4 rounded p-4 transition hover:bg-sky-800"
+              className="flex cursor-pointer flex-row place-content-center items-center space-x-4 rounded p-4 transition hover:bg-teal-800"
               key={i}
             >
-              <div className="rounded bg-white p-3 text-sky-900">
+              <div className="rounded bg-white p-3 text-teal-900">
                 {item?.icon}
               </div>
               <div className="flex flex-col">

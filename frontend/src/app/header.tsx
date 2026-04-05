@@ -55,7 +55,7 @@ export default function Header({}: Props) {
         {/* Logo */}
         <div className="flex cursor-pointer flex-row items-center space-x-2">
           <span className="text-yellow-600">{content?.logo?.icon}</span>
-          <span className="text-2xl font-bold text-sky-800">
+          <span className="text-2xl font-bold text-teal-800">
             {content?.logo?.title}
           </span>
         </div>
@@ -66,8 +66,8 @@ export default function Header({}: Props) {
               <Link href={item?.link} key={i}>
                 <li
                   className={`${
-                    item?.active ? "font-medium text-sky-700" : "text-sky-600"
-                  } transition hover:text-sky-900`}
+                    item?.active ? "font-medium text-teal-700" : "text-teal-600"
+                  } transition hover:text-teal-900`}
                 >
                   {item?.title}
                 </li>
@@ -76,7 +76,7 @@ export default function Header({}: Props) {
         </ul>
 
         {/* Buttons */}
-        <button className="rounded-md bg-sky-900 px-6 py-3 font-semibold text-white transition hover:bg-sky-900/90 focus:outline-none">
+        <button className="rounded-md bg-teal-900 px-6 py-3 font-semibold text-white transition hover:bg-teal-900/90 focus:outline-none">
           {content?.button}
         </button>
       </nav>

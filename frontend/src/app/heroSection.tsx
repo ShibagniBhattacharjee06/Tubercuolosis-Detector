@@ -19,24 +19,24 @@ export default function HeroSection({}: Props) {
       <div className="mx-auto grid max-w-7xl grid-cols-1 pt-8 md:grid-cols-2">
         {/* Main Content */}
         <div className="flex flex-col space-y-3 py-12">
-          <h1 className="flex flex-col space-y-5 text-6xl font-bold text-sky-800">
+          <h1 className="flex flex-col space-y-5 text-6xl font-bold text-teal-800">
             <span> For Best </span>
             <span>
-              <span className="border border-sky-500 px-4"> Medical</span> and{" "}
-              <span className="text-sky-500">Health </span>{" "}
+              <span className="border border-teal-500 px-4"> Medical</span> and{" "}
+              <span className="text-teal-500">Health </span>{" "}
             </span>
             <span>Care</span>
           </h1>
-          <p className="text-lg text-sky-600">{content?.description} </p>
+          <p className="text-lg text-teal-600">{content?.description} </p>
 
           {/* Buttons */}
           <div className="flex flex-row space-x-8 pt-10">
             <Link href="try-now">
-              <button className="rounded-md bg-sky-900 px-10 py-3 font-semibold text-white transition hover:bg-sky-900/90 focus:outline-none">
+              <button className="rounded-md bg-teal-900 px-10 py-3 font-semibold text-white transition hover:bg-teal-900/90 focus:outline-none">
                 {content?.cta_button}
               </button>
             </Link>
-            <button className="font-semibold text-sky-500 transition hover:text-sky-700 focus:outline-none">
+            <button className="font-semibold text-teal-500 transition hover:text-teal-700 focus:outline-none">
               See more
             </button>
           </div>
@@ -76,9 +76,9 @@ export default function HeroSection({}: Props) {
               <div className="h-10 w-10 rounded-full bg-emerald-500"></div>
               <div className="h-20 w-20 rounded-tl-full bg-yellow-400"></div>
             </div>
-            <div className="h-20 w-20 rounded-br-full bg-sky-400"></div>
+            <div className="h-20 w-20 rounded-br-full bg-teal-400"></div>
           </div>
-          <div className="absolute right-0 z-0 h-full w-1/2 bg-sky-800"></div>
+          <div className="absolute right-0 z-0 h-full w-1/2 bg-teal-800"></div>
         </div>
       </div>
     </section>
