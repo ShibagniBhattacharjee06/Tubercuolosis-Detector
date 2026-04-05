@@ -1,6 +1,4 @@
-from typing import Dict
-
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.ml_model.predict import get_result
@@ -12,10 +10,23 @@ app = FastAPI(
     version="0.1",
 )
 
-origins = ["*"]
+@app.middleware("http")
+async def add_cors_headers(request: Request, call_next):
+    # Handle preflight OPTIONS requests directly
+    if request.method == "OPTIONS":
+        response = Response()
+    else:
+        response = await call_next(request)
+    
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS, PUT, DELETE"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    return response
+
+# Standard middleware as secondary fallback
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,7 +36,7 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v1.4-Diagnostic-Live"}
+    return {"message": "Welcome to MEDICARE app! v1.5-Bulletproof-CORS"}
 
 
 @app.get("/api/v1/predict")
