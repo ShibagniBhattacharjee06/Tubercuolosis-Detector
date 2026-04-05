@@ -91,9 +91,8 @@ def get_prediction(image_bytes):
     
     return class_names[predicted_idx], confidence
 
-def get_result(image_file, is_api=False):
+def get_result(image_bytes, is_api=False):
     start_time = datetime.datetime.now()
-    image_bytes = image_file.file.read()
     
     class_name, confidence = get_prediction(image_bytes)
     
@@ -106,7 +105,6 @@ def get_result(image_file, is_api=False):
     execution_time = f'{round((datetime.datetime.now() - start_time).total_seconds() * 1000)} ms'
     
     # FINAL MEMORY CLEANUP
-    del image_bytes
     gc.collect()
 
     result = {
