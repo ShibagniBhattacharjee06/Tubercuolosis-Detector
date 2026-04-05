@@ -14,7 +14,7 @@ app = FastAPI(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v1.7-Absolute-Force"}
+    return {"message": "Welcome to MEDICARE app! v2.0-UltraLean-Final"}
 
 @app.options("/api/v1/predict")
 async def predict_options():
