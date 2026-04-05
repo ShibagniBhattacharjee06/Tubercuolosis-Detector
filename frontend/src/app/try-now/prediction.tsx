@@ -40,7 +40,7 @@ export default function Prediction() {
 
     // Clean URL: Remove trailing slash if present
     apiUrl = apiUrl.trim().replace(/\/$/, "");
-    const fullUrl = `${apiUrl}/api/v1/predict`;
+    const fullUrl = "/api/predict";
 
     try {
       const response = await fetch(fullUrl, {
