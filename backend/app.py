@@ -26,33 +26,38 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v2.1-Standardized"}
+    return {"message": "Welcome to MEDICARE app! v2.2-Diagnostics-Active"}
 
 @app.post("/api/v1/predict")
 async def predict(file: UploadFile = File(...)):
     try:
-        # Read file asynchronously (efficient for larger images)
+        # Read file asynchronously
         image_bytes = await file.read()
         
-        # Guard: Check if file is empty
         if len(image_bytes) == 0:
             return JSONResponse(
                 status_code=400,
-                content={"error": "Empty file uploaded"}
+                content={"error": "Empty file uploaded", "server_version": "v2.2"}
             )
             
+        print(f"DEBUG: Processing image of size {len(image_bytes)} bytes")
         result = get_result(image_bytes=image_bytes, is_api=True)
+        print("DEBUG: Prediction successful")
         return result
         
     except Exception as e:
-        print(f"Prediction error: {e}")
+        error_msg = str(e)
+        error_type = type(e).__name__
+        print(f"CRITICAL: Prediction error [{error_type}]: {error_msg}")
         traceback.print_exc()
+        
         return JSONResponse(
             status_code=500,
             content={
-                "error": str(e),
-                "details": "Check server logs for full traceback.",
-                "type": type(e).__name__
+                "error": error_msg,
+                "type": error_type,
+                "server_version": "v2.2",
+                "details": "Check Render logs for full traceback. Possibly memory related."
             }
         )
 

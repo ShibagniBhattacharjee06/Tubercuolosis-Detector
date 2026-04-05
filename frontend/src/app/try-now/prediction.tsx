@@ -49,7 +49,17 @@ export default function Prediction() {
       });
 
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status} at ${fullUrl}`);
+        let errorTitle = `Server responded with ${response.status}`;
+        let errorMessage = "";
+        
+        try {
+          const errorData = await response.json();
+          errorMessage = `\n\nERROR: ${errorData.error || "Unknown Error"}\nTYPE: ${errorData.type || "N/A"}\nVERSION: ${errorData.server_version || "N/A"}\n\nDETAILS: ${errorData.details || ""}`;
+        } catch (jsonError) {
+          errorMessage = "\n\nCould not parse error details from server.";
+        }
+        
+        throw new Error(`${errorTitle}${errorMessage}`);
       }
 
       const json = await response.json();
@@ -59,7 +69,7 @@ export default function Prediction() {
     } catch (error) {
       console.error("Prediction Error:", error);
       setLoading(false);
-      alert(`Error connecting to backend.\n\nURL: ${fullUrl}\nDetails: ${error.message}`);
+      alert(`Backend Error Details:\n${error.message}`);
     }
   };
   const handleClear = () => {
