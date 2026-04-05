@@ -12,16 +12,12 @@ app = FastAPI(
     version="0.1",
 )
 
-origins = [
-    "https://tubercuolosis-detector.vercel.app",
-    "https://tubercuolosis-detector-git-main-shibagnibhattacharjee06s-projects.vercel.app",
-    "http://localhost:3000",
-]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_credentials=False,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -29,7 +25,7 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v1.2-CORS-Fixed"}
+    return {"message": "Welcome to MEDICARE app! v1.3-SafeMode-Ready"}
 
 
 @app.post("/api/v1/predict")
