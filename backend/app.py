@@ -1,3 +1,4 @@
+from typing import Dict
 from fastapi import FastAPI, File, UploadFile, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -36,7 +37,7 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v1.5-Bulletproof-CORS"}
+    return {"message": "Welcome to MEDICARE app! v1.6-Manual-Fix"}
 
 
 @app.get("/api/v1/predict")
