@@ -26,7 +26,7 @@ app.add_middleware(
 @app.get("/")
 def index():
     """Return a welcome message."""
-    return {"message": "Welcome to MEDICARE app! v2.2-Diagnostics-Active"}
+    return {"message": "Welcome to MEDICARE app! v2.3-Final-Fix"}
 
 @app.post("/api/v1/predict")
 async def predict(file: UploadFile = File(...)):
@@ -37,7 +37,7 @@ async def predict(file: UploadFile = File(...)):
         if len(image_bytes) == 0:
             return JSONResponse(
                 status_code=400,
-                content={"error": "Empty file uploaded", "server_version": "v2.2"}
+                content={"error": "Empty file uploaded", "server_version": "v2.3"}
             )
             
         print(f"DEBUG: Processing image of size {len(image_bytes)} bytes")
@@ -56,8 +56,8 @@ async def predict(file: UploadFile = File(...)):
             content={
                 "error": error_msg,
                 "type": error_type,
-                "server_version": "v2.2",
-                "details": "Check Render logs for full traceback. Possibly memory related."
+                "server_version": "v2.3",
+                "details": "Model inference failed. Ensure input image format is correct."
             }
         )
 

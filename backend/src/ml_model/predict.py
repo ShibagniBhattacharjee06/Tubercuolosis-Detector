@@ -57,18 +57,15 @@ def transform_image(image_bytes):
     left, top = (w - 224) / 2, (h - 224) / 2
     image = image.crop((left, top, left + 224, top + 224))
     
-    # ToTensor & Normalize
+    # ToTensor & Normalize (Ensuring float32 for ONNX compatibility)
     img_array = np.array(image).astype(np.float32) / 255.0
     img_array = img_array.transpose((2, 0, 1))
     
-    mean = np.array([0.485, 0.456, 0.406]).reshape(3, 1, 1)
-    std = np.array([0.229, 0.224, 0.225]).reshape(3, 1, 1)
+    mean = np.array([0.485, 0.456, 0.406], dtype=np.float32).reshape(3, 1, 1)
+    std = np.array([0.229, 0.224, 0.225], dtype=np.float32).reshape(3, 1, 1)
     img_array = (img_array - mean) / std
     
-    # Cleanup raw image object immediately
-    image.close()
-    
-    return np.expand_dims(img_array, axis=0)
+    return np.expand_dims(img_array.astype(np.float32), axis=0)
 
 def sigmoid(x):
     return 1.0 / (1.0 + np.exp(-x))
