@@ -1,83 +1,312 @@
-# Title: Tuberculosis (TB) Detection from Chest X-ray using Deep Transfer Learning (PyTorch)
+# 🫁 Tuberculosis Detector
 
-## Domain: Medical Imaging
+An AI-powered Tuberculosis Detection System that analyzes Chest X-Ray images using Deep Learning to assist in the early identification of Tuberculosis (TB). This project is one of the core diagnostic modules within the **Medicare Healthcare Platform**, a unified ecosystem that integrates multiple AI-powered healthcare services into a single application.
 
-![image](https://user-images.githubusercontent.com/46085301/227527871-be1da2c3-b6f9-47d4-82a0-5a9529054f38.png)
+## 🌐 Live Demo
 
-## Introduction:
+### Tuberculosis Detection Module
+🔗 https://tubercuolosis-detector.vercel.app
 
-### Background
+### Medicare Main Platform
+🔗 https://medicare-beryl.vercel.app
 
-Tuberculosis (TB) is a communicable disease which is a major public health problem in Nepal. It is one of
-the top 10 causes of death worldwide and in Nepal, and the leading cause of death from a single infectious
-agent (ranking above HIV/AIDS).
+---
 
-In Nepal, an estimated 69,000 fell ill with TB during FY 2077/78. National Tuberculosis Programme (NTP)
-registered 28,677 (nearly 58% missing vs. the projection) all forms of TB cases (38% female and 62% male).
-Out of 28,677 all forms of TB cases, 28,182 incident TB cases.
+# 📖 About The Project
 
-> Source : Department of Health Services
-> 2077/78 (2020/21) | Annual Report
+Tuberculosis remains one of the world's most prevalent infectious diseases, particularly affecting developing and resource-constrained regions where access to radiologists and healthcare specialists may be limited.
 
-### Goal and Objective
+The Tuberculosis Detector leverages Deep Learning and Medical Image Analysis to automatically examine Chest X-Ray images and identify signs of Tuberculosis with high accuracy.
 
-The goal of this project is to develop an AI-based solution for detecting tuberculosis from chest X-ray images using transfer learning approach. The solution aims to improve the accuracy and efficiency of TB diagnosis. We aim to use the pre-trained model to detect the signs of TB in chest X-ray images and fine-tune the model to improve the performance. Our solution aims to assist healthcare providers and help in addressing the TB epidemic, particularly in under-served areas where access to healthcare is limited.
+Developed as a specialized AI service within the Medicare ecosystem, this module can function independently or seamlessly integrate with the Medicare platform, enabling users to access multiple healthcare diagnostic tools from a centralized dashboard.
 
-### Dataset:
+The goal is to support healthcare professionals with faster preliminary screening and improve healthcare accessibility through AI-assisted diagnosis.
 
-We have used Tuberculosis (TB) Chest X-ray Database to train and evaluate our model.
+---
 
-#### [Tuberculosis (TB) Chest X-ray Database](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset)
+# 🏥 Medicare Ecosystem
 
-A team of researchers from Qatar University, Doha, Qatar, and the University of Dhaka, Bangladesh along with their collaborators from Malaysia in collaboration with medical doctors from Hamad Medical Corporation and Bangladesh have created a database of chest X-ray images for Tuberculosis (TB) positive cases along with Normal images. In our current release, there are 700 TB images publicly accessible and 2800 TB images can be downloaded from NIAID TB portal[3] by signing an agreement, and 3500 normal images.
+This project is part of the larger **Medicare Healthcare Platform**, where multiple independently deployed AI services work together to provide comprehensive healthcare assistance.
 
-> Tawsifur Rahman, Amith Khandakar, Muhammad A. Kadir, Khandaker R. Islam, Khandaker F. Islam, Zaid B. Mahbub, Mohamed Arselene Ayari, Muhammad E. H. Chowdhury. (2020) "Reliable Tuberculosis Detection using Chest X-ray with Deep Learning, Segmentation and Visualization". IEEE Access, Vol. 8, pp 191586 - 191601. DOI. 10.1109/ACCESS.2020.3031384. Paper Link
+### Medicare Modules
 
-### Run Locally
+- 🫁 Tuberculosis Detection System
+- 🦴 Fracture Detection System
+- 🧠 Brain Tumor Detection System
+- 🩺 AI Skin Disease Assistant
+- 🤖 AI Doctor Assistant
+- 👩‍⚕️ ASHA Worker Management Portal
 
-Step 1. Clone the repository
+Each module is developed, trained, deployed, and maintained independently while remaining connected through the Medicare platform.
 
-```bash
-git clone https://github.com/bhimrazy/medicare.git
+```text
+                     Medicare Platform
+                 (medicare-beryl.vercel.app)
+
+                              │
+     ┌────────────┬────────────┬────────────┬────────────┐
+     │            │            │            │            │
+ Tuberculosis  Fracture    Brain Tumor    Skin AI    AI Doctor
+   Service      Service      Service      Service      Service
+
+         │
+         ▼
+
+tubercuolosis-detector.vercel.app
 ```
 
-Step 2. Go to the project directory
+---
 
-```bash
-cd medicare
+# 🎯 Problem Statement
+
+Tuberculosis diagnosis often requires expert radiological examination and can be time-consuming, especially in healthcare systems facing resource constraints.
+
+This project aims to:
+
+- Assist in early Tuberculosis screening
+- Reduce diagnostic delays
+- Improve healthcare accessibility
+- Support healthcare professionals with AI-assisted analysis
+- Provide rapid Chest X-Ray interpretation
+
+The system serves as a diagnostic support tool and is not intended to replace professional medical evaluation.
+
+---
+
+# 🚀 Features
+
+## Automated Chest X-Ray Analysis
+
+Users can upload Chest X-Ray images directly through the web interface for instant analysis.
+
+---
+
+## Binary Disease Classification
+
+The model classifies X-Ray scans into:
+
+- Tuberculosis
+- Normal
+
+---
+
+## Confidence Score Generation
+
+Every prediction is accompanied by a confidence score, allowing users and healthcare professionals to assess prediction reliability.
+
+---
+
+## Real-Time Inference
+
+The system performs rapid image analysis and generates results within seconds.
+
+---
+
+## User-Friendly Dashboard
+
+Provides:
+
+- X-Ray Preview
+- Prediction Result
+- Confidence Score
+- Simple Healthcare Interface
+
+---
+
+## Medicare Integration
+
+The module operates both:
+
+- As an independent application
+- As a fully integrated Medicare diagnostic service
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                     User Uploads
+                   Chest X-Ray Image
+                            │
+                            ▼
+                   Image Preprocessing
+                            │
+                            ▼
+                    Image Normalization
+                            │
+                            ▼
+                    DenseNet-121 Model
+                            │
+                            ▼
+                    Feature Extraction
+                            │
+                            ▼
+                   Binary Classification
+                            │
+                            ▼
+                   Confidence Calculation
+                            │
+                            ▼
+                     Prediction Output
 ```
 
-Step 3. Start Backend Server
+---
 
-```bash
-cd backend
+# 🧠 AI Model Architecture
 
-# create virtual environment
-python -m venv venv # or python3 -m venv venv
-# activate virtual environment
-source venv/bin/activate  # source venv/Scripts/activate (for windows)
+The Tuberculosis Detection System utilizes **DenseNet-121**, a powerful Convolutional Neural Network architecture known for efficient feature propagation and strong performance in medical image classification tasks.
 
-# install dependencies
-pip install -r dev-requirements.txt
+### Why DenseNet-121?
 
-# start server
-python app.py
+- Efficient feature reuse
+- Reduced parameter count
+- Strong medical imaging performance
+- Better gradient flow
+- High classification accuracy
 
-```
+The model is trained on Chest X-Ray datasets containing both normal and tuberculosis-positive cases.
 
-Step 4. Start Frontend Server
+---
 
-```bash
-cd frontend
+# 🔄 Model Workflow
 
-# install dependencies
-npm install
+### Step 1: Image Upload
 
-# copy env file
-cp .env.example .env.local
+The user uploads a Chest X-Ray image.
 
-# start server
-npm run dev
+### Step 2: Preprocessing
 
-# open browser and go to http://localhost:3000
-```
+The image is resized, normalized, and prepared for model inference.
+
+### Step 3: Feature Extraction
+
+DenseNet-121 extracts complex pulmonary features from the image.
+
+### Step 4: Prediction
+
+The model determines whether the scan indicates Tuberculosis or Normal conditions.
+
+### Step 5: Confidence Generation
+
+A confidence score is calculated for the prediction.
+
+### Step 6: Result Display
+
+The final result is displayed through the user interface.
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+- React.js
+- Vite
+- Tailwind CSS
+
+## Backend
+
+- Python
+- Flask
+
+## Artificial Intelligence
+
+- TensorFlow
+- Keras
+- DenseNet-121
+- OpenCV
+- NumPy
+- Pandas
+
+## Deployment
+
+- Vercel
+- Render
+
+---
+
+# 📊 Performance Highlights
+
+The model demonstrates strong performance across evaluation metrics.
+
+### Achievements
+
+- Accuracy: ~98%
+- High Precision
+- High Recall
+- Strong F1-Score
+- Low False Negative Rate
+- Fast Inference Speed
+
+The model is optimized to minimize missed Tuberculosis cases, making recall a particularly important evaluation metric.
+
+---
+
+# 💡 Key Engineering Highlights
+
+### Modular AI Service
+
+Developed as an independent microservice that can be updated without affecting other Medicare modules.
+
+### Scalable Integration
+
+Connected to the Medicare platform through API-based communication.
+
+### Cloud Deployment
+
+Supports real-time predictions through cloud-hosted infrastructure.
+
+### Maintainable Architecture
+
+Follows a modular design for future expansion and enhancements.
+
+---
+
+# 🔮 Future Enhancements
+
+- Explainable AI using Grad-CAM
+- Heatmap Visualization of Infected Regions
+- Multi-Disease Chest X-Ray Detection
+- Mobile Application Integration
+- Offline Inference Support
+- Electronic Health Record Integration
+- Clinical Decision Support Features
+
+---
+
+# 📌 Project Links
+
+## Tuberculosis Detection System
+
+### Live Demo
+🔗 https://tubercuolosis-detector.vercel.app
+
+### GitHub Repository
+🔗 [Add Repository Link]
+
+---
+
+## Medicare Healthcare Platform
+
+### Live Demo
+🔗 https://medicare-beryl.vercel.app
+
+### GitHub Repository
+🔗 [Add Medicare Repository Link]
+
+---
+
+# ⚠️ Disclaimer
+
+This project is intended for educational, research, and healthcare assistance purposes only. The predictions generated by the model should not be considered a replacement for professional medical diagnosis, clinical judgment, or treatment recommendations.
+
+---
+
+# 👨‍💻 Developer
+
+**Shibagni Bhattacharjee**
+
+B.Tech Computer Science Engineering  
+University of Engineering & Management, Jaipur
+
+⭐ If you found this project useful, consider giving the repository a star.
